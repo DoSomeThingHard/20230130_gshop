@@ -49,6 +49,7 @@
                 <!-- <img ref="captcha" class="get_verification" src="http://localhost:3000/captcha" alt="captcha" @click="getCaptchaCode"> -->
                 <img ref="captcha" class="get_verification" src="./images/captcha.svg" alt="captcha" @click="getCaptchaCode">
               </section>
+              
             </section>
           </div>
           <input type="submit" value="登录" class="login_submit" />
