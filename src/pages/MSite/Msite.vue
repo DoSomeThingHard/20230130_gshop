@@ -12,17 +12,21 @@
         <span class="header_login_text">登录|注册1</span>
       </a>
     </header> -->
-    <HeaderTop title="昌平区北七家宏福科技园(337省道北)">
-      <a class="header_search" slot="search">
+    <HeaderTop :title="address.name">
+      <router-link class="header_search" slot="search" to='/search'>
         <i class="iconfont icon-sousuo"></i>
-      </a>
-      <a class="header_login" slot="login">
-        <span class="header_login_text">登录|注册</span>
-      </a>
+      </router-link>
+      <router-link class="header_login" slot="login" :to="userInfo.uid ? '/userinfo':'/login'">
+        <!-- 未登录显示登陆过 登陆完显示用户头像 -->
+        <span class="header_login_text" v-if="!userInfo.uid">登录|注册</span>
+        <span class="header_login_text" v-else>
+            <i class="iconfont icon-person"></i>
+        </span>
+      </router-link>
     </HeaderTop>
     <!--首页导航-->
     <nav class="msite_nav border-1px">
-      <div class="swiper">
+      <div class="swiper" v-if="true">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <a href="javascript:" class="link_to_food">
@@ -133,6 +137,7 @@
         <!-- 如果需要滚动条 -->
         <!-- <div class="swiper-scrollbar"></div> -->
       </div>
+      <img src="./images/msite_back.svg" alt="back" v-else>
     </nav>
     <!--首页附近商家-->
     <div class="msite_shop_list border-1px">
@@ -148,23 +153,29 @@
 <script>
 import HeaderTop from "../../components/HeaderTop/HeaderTop.vue";
 import ShopList from "../../components/ShopList/ShopList.vue";
-import Swiper ,{Pagination} from "swiper";        // ES引入方式
-import "swiper/swiper-bundle.min.css";  // 根据实际路径和文件修改
-Swiper.use(Pagination)
+import Swiper, { Pagination } from "swiper"; // ES引入方式
+import "swiper/swiper-bundle.min.css"; // 根据实际路径和文件修改
+import { mapState } from "vuex";
+
+Swiper.use(Pagination);
 export default {
   components: {
     HeaderTop,
-    ShopList
+    ShopList,
   },
   mounted() {
     new Swiper(".swiper", {
-    //   direction: "vertical", // 垂直切换选项
+      //   direction: "vertical", // 垂直切换选项
       loop: true, // 循环模式选项
       // 如果需要分页器
       pagination: {
         el: ".swiper-pagination",
       },
     });
+  },
+  computed: {
+    ...mapState('msiteOptions',["address"]),
+    ...mapState('loginOptions',["userInfo"]),
   },
 };
 </script>

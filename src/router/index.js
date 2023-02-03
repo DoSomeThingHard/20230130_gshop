@@ -8,6 +8,7 @@ import Search from '../pages/Search/Search'
 import Order from '../pages/Order/Order'
 import Profile from '../pages/Profile/Profile'
 import Login from '../pages/Login/Login'
+import UserInfo from '../pages/UserInfo/UserInfo'
 
 Vue.use(vueRouter) 
 
@@ -46,6 +47,10 @@ const router = new vueRouter({
         {
             path: '/login',
             component: Login,
+        },
+        {
+            path: '/userinfo',
+            component: UserInfo
         },
         {
             path:'/',

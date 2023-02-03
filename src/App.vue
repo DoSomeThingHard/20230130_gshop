@@ -7,6 +7,7 @@
 
 <script>
 import FooterGuide from './components/FooterGuide/FooterGuide.vue'
+import {mapActions} from 'vuex'
 export default {
   name: "App",
   data() {
@@ -17,8 +18,12 @@ export default {
     FooterGuide
   },
   methods: {
+    ...mapActions('loginOptions',['getUserInfo'])
   },
   mounted() {
+    console.log(this.$store)
+    this.$store.dispatch('msiteOptions/getAddress')
+    this.getUserInfo()
   },
   beforeDestroy() {
   },

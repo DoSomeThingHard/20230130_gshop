@@ -16,11 +16,18 @@ export default function ajax(url = '', data = {}, type = 'GET') {
                 dataStr = dataStr.substr(0, dataStr.lastIndexOf('&'))
                 url = url + '?' + dataStr
             }
+            console.log(url)
             // 发送get请求
             promise = axios.get(url)
         } else {
             // 发送post请求
-            promise = axios.post(url, data)
+            const apptoken =  window.localStorage.getItem('apptoken')
+            if(apptoken && apptoken.length > 0){
+                console.log('appToken: '+apptoken)
+                promise = axios.post(url, data,{headers:{'apptoken':apptoken}})
+            }else{
+                promise = axios.post(url, data)
+            }
         }
         // promise.then(function(response){
         //     resolve(response.data)
@@ -30,7 +37,10 @@ export default function ajax(url = '', data = {}, type = 'GET') {
         promise.then(response => {
             resolve(response.data)
         }).catch(error => {
-            reject(error)
+            // 错误信息 我们也返回出去
+            console.log(error)
+            resolve({code:1,msg:error.message})
+            // reject(error)
         })
     })
 }
