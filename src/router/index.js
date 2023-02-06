@@ -9,6 +9,10 @@ import Order from '../pages/Order/Order'
 import Profile from '../pages/Profile/Profile'
 import Login from '../pages/Login/Login'
 import UserInfo from '../pages/UserInfo/UserInfo'
+import Shop from '../pages/Shop/Shop'
+import ShopGoods from '../pages/Shop/ShopGoods/ShopGoods'
+import ShopInfo from '../pages/Shop/ShopInfo/ShopInfo'
+import ShopRating from '../pages/Shop/ShopRating/ShopRating'
 
 Vue.use(vueRouter) 
 
@@ -51,6 +55,28 @@ const router = new vueRouter({
         {
             path: '/userinfo',
             component: UserInfo
+        },
+        {
+            path:'/shop',
+            component: Shop,
+            children:[
+                {
+                    path:'/shop/goods',
+                    component: ShopGoods
+                },
+                {
+                    path:'/shop/rating',
+                    component: ShopRating
+                },
+                {
+                    path:'/shop/info',
+                    component: ShopInfo
+                },
+                {
+                    path:'',
+                    redirect:'/shop/goods'
+                }
+            ]
         },
         {
             path:'/',

@@ -10,10 +10,12 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "axios": "^1.2.1",
+    "better-scroll": "^2.5.0",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.12",
     "less-loader": "^7.3.0",
     "mint-ui": "^2.2.13",
+    "mockjs": "^1.1.0",
     "nanoid": "^4.0.0",
     "pubsub-js": "^1.9.4",
     "swiper": "^8.4.6",

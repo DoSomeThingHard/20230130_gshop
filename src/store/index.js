@@ -5,6 +5,7 @@ import Vue from 'vue' // 引入vue
 import Vuex from 'vuex'
 import msiteOptions from './msite'
 import loginOptions from './login'
+import shopOptions from './shop'
 
 Vue.use(Vuex) // 使用插件 下面创建vm的时候就可以传入$store了，vm和vc的实例对象就都有$store了。
 
@@ -12,6 +13,7 @@ Vue.use(Vuex) // 使用插件 下面创建vm的时候就可以传入$store了，
 export default new Vuex.Store({
     modules:{
         loginOptions,
-        msiteOptions
+        msiteOptions,
+        shopOptions
     }
 })

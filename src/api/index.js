@@ -26,3 +26,9 @@ export const reqUser = () => ajax('/api/user/banggo/getUserInfo',{},'POST')
 export const testApi = () => ajax('/qianzui/proxy/factorybybrand',{brandid:15,state:'0x001C',typeid:0})
 export const myReqAddress = () => ajax('https://api.uixsj.cn/hitokoto/get?type=social')
 
+// 获取商家信息
+export const reqShopInfo = ()=>ajax('/shop_info')
+// 获取商家评价数字
+export const reqShopRatings = ()=>ajax('/shop_ratings')
+// 获取商家商品数组
+export const reqShopGoods = ()=>ajax('/shop_goods')

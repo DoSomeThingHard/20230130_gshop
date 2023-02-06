@@ -1,23 +1,21 @@
 <template>
   <div class="shop_container">
         <ul class="shop_list">
-          <li class="shop_li border-1px">
+          <li class="shop_li border-1px" v-for="(shop, index) in shops" :key="index" @click="$router.push('/shop')">
             <a>
               <div class="shop_left">
                 <img class="shop_img" src="./images/shop/1.jpg" />
               </div>
               <div class="shop_right">
                 <section class="shop_detail_header">
-                  <h4 class="shop_title">锄禾日当午，汗滴禾下土</h4>
+                  <h4 class="shop_title">{{shop.name}}</h4>
                   <ul class="shop_detail_ul">
-                    <li class="supports">保</li>
-                    <li class="supports">准</li>
-                    <li class="supports">票</li>
+                    <li class="supports" v-for='(support,index) in shop.supports' :key='index'>{{support.icon_name}}</li>
                   </ul>
                 </section>
                 <section class="shop_rating_order">
                   <section class="shop_rating_order_left">
-                    <Star :score='3.6' :size="24"/>
+                    <Star :score="shop.rating" :size="24"/>
                     <div class="rating_section">3.6</div>
                     <div class="order_section">月售106单</div>
                   </section>
@@ -148,6 +146,14 @@
 <script>
 import Star from '../../components/Star/Star.vue'
 export default {
+    data() {
+        return {
+            shops:[{image_path:'',name:'锄禾日当午，汗滴禾下土',supports:[{icon_name:'保'},{icon_name:'准'},{icon_name:'票'}],rating:3.6,recent_order_num:'20',delivery_mode:{text:'商家配送'},float_mininum_order_amount:'20',float_delivery_fee:'5'},
+            {image_path:'2.jpg',name:'',support:[{icon_name:''}],rating:4.1,recent_order_num:'20',delivery_mode:{text:'商家配送'},float_mininum_order_amount:'20',float_delivery_fee:'5'},
+            {image_path:'3.jpg',name:'',support:[{icon_name:''}],rating:3.2,recent_order_num:'20',delivery_mode:{text:'商家配送'},float_mininum_order_amount:'20',float_delivery_fee:'5'},
+            {image_path:'4.jpg',name:'',support:[{icon_name:''}],rating:3.6,recent_order_num:'20',delivery_mode:{text:'商家配送'},float_mininum_order_amount:'20',float_delivery_fee:'5'}]
+        }
+    },
     components:{
         Star
     }
