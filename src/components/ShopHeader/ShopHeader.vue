@@ -96,7 +96,7 @@
               <span class="mini-tag">首单</span>
             </span>
             <span class="activity-content"
-              >新用户下单立减17元(不与其它活动同享)</span
+              >新用户下单立减17元(不与其它活动同享)这利旧多现实一点文字了吧无所谓了</span
             >
           </li>
           <li class="activity-item activity-red">
@@ -342,6 +342,11 @@ export default {
             justify-content: center;
           }
         }
+        .activity-content{
+            white-space: nowrap;          
+            overflow: hidden;                   
+            text-overflow: ellipsis;         
+        }
       }
     }
 
@@ -583,6 +588,7 @@ export default {
             color: #fff;
             font-style: normal;
             position: relative;
+            flex-shrink: 0  // 不被压缩
 
             .mini-tag {
               position: absolute;
