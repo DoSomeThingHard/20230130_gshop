@@ -13,11 +13,13 @@ export default {
             }
         },
 
-        async getShopRatings (context){
+        async getShopRatings (context,callback){
             const result = await reqShopRatings()
             if(result.code === 0){
                 const ratings = result.data
                 context.commit('RECEIVE_RATINGS',ratings)
+                // 数据更新了，通知一下
+                callback && callback()
             }
         },
 
@@ -92,6 +94,9 @@ export default {
             return state.cartFoods.reduce((preTotalPrice, food) => {
                 return preTotalPrice + food.count * food.price
             },0)
+        },
+        positiveSize(state){
+            return state.ratings.reduce((preTotal, rating) => preTotal + (rating.rateType===0?1:0), 0 )
         }
     }
 }
