@@ -10,7 +10,9 @@ export const reqAddress = geohash => ajax(`/api/position/${geohash}`)
 export const reqCategorys = () => ajax('/api/index_category')
 // 获取msite商铺列表(根据经纬度)
 // export const reqShops = ({a, b}) => ajax('/api/shops', {latitude:a, longitude:b})
-export const reqShops = ({latitude, longitude}) => ajax('/api/shops', {latitude, longitude})
+export const reqShops = (latitude, longitude) => ajax('/api/shops', {latitude, longitude})
+// 根据经纬度和关键字搜索商铺列表
+export const reqSearchShop = (word) => ajax('/api/search/getProductList',{word,pageNo:'0',pageSize:'15',channelCode:'HQ01S116'},'POST')
 // 获取图片验证码
 export const reqCaptchas = (time) => ajax('/api/captchas?time='+time)
 // 账号密码登录

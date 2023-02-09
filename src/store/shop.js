@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import {reqShopGoods, reqShopRatings, reqShopInfo} from '../api'
+import {reqShopGoods, reqShopRatings, reqShopInfo,reqSearchShop} from '../api'
 export default {
     namespaced:true,
     actions: {
@@ -38,8 +38,24 @@ export default {
                 context.commit('DECREMENT_FOOD_COUNT',food)
             }
         },
+        // 同步清除购物车
         clearCart(context){
             context.commit('CLEAR_CART')
+        },
+        // 异步请求搜索商家
+        async searchShops(context, {word, callback}){
+            console.log(context,callback)
+            const geohash = context.rootState.msiteOptions.latitude + ',' + context.rootState.msiteOptions.longitude 
+            const result = await reqSearchShop(word)
+            console.log(result)
+            if(result.status === "OK"){
+                const searchResult = result.result.list
+                context.commit('RECEIVE_SEARCH_SHOPS',searchResult)
+            }else{
+                context.commit('RECEIVE_SEARCH_SHOPS',[])
+            }
+            // 数据更新了，通知一下
+            callback && callback()
         }
     },
     mutations: {
@@ -76,6 +92,9 @@ export default {
             state.cartFoods.forEach(food => food.count = 0);
             // 清除购物车中的所有数据
             state.cartFoods = [];
+        },
+        RECEIVE_SEARCH_SHOPS(state, searchShops){
+            state.searchShops = searchShops
         }
     },
     state: {
@@ -84,6 +103,8 @@ export default {
         info:{}, // 商家信息,
 
         cartFoods: [], // 购物车中食物的列表
+
+        searchShops: [] // 搜索得到的商家列表
 
     },
     getters: {
