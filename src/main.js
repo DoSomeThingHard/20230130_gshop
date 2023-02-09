@@ -11,6 +11,16 @@ import {Button} from 'mint-ui'
 import './mock/mockServer'    // 加载mockServer即可
 import './filters'
 
+import VueLazyload from 'vue-lazyload'
+// or with options
+const loadimage = require('./assets/loading.gif')
+Vue.use(VueLazyload, {    // 增加了一个指令 v-lazy
+  // preLoad: 1.3,
+  // error: errorimage,
+  loading: loadimage,   // 图片加载中的loading图片
+  // attempt: 1
+})
+
 // 注册全局组件标签
 Vue.component(Button.name, Button)  // <mt-button>
 
