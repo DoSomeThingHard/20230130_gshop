@@ -136,6 +136,9 @@ export default {
     Split,
     RatingSelect,
   },
+  destroyed() {
+      console.log('shopRating destoryed')
+  },
 };
 </script>
 

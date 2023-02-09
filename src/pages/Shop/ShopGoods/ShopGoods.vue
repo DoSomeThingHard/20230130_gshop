@@ -141,7 +141,10 @@ export default {
         CartControl,
         Food,
         ShopCart
-    }
+    },
+    destroyed() {
+      console.log('shopGoods destoryed')
+    },
 
 };
 </script>
