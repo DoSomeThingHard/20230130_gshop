@@ -5,13 +5,15 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "echo hello"
   },
   "dependencies": {
     "animate.css": "^4.1.1",
     "axios": "^1.2.1",
     "better-scroll": "^2.5.0",
     "core-js": "^3.6.5",
+    "date-fns": "^2.29.3",
     "element-ui": "^2.15.12",
     "less-loader": "^7.3.0",
     "mint-ui": "^2.2.13",
