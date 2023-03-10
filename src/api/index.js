@@ -3,6 +3,9 @@
  */
 import ajax from './ajax'
 
+var BaseUrl = 'http://yfbgserver.fi.com'
+// BaseUrl = ''
+
 // 获取地址信息(根据经纬度串)
 // export const reqAddress = geohash => ajax('/api/position/' + geohash)
 export const reqAddress = geohash => ajax(`/api/position/${geohash}`)
@@ -20,9 +23,9 @@ export const accountLogin = (name, pwd, captcha) => ajax('/api/login_pwd', {name
 // 获取短信验证码
 export const mobileCode = phone => ajax('/api/sendcode', {phone})
 // 手机号验证码登录
-export const phoneLogin = (mobile, checkCode) => ajax('/api/app/banggo/loginByMobile', {mobile, checkCode,appId:'2'}, 'POST')
+export const phoneLogin = (mobile, checkCode) => ajax(`${BaseUrl}/api/app/banggo/loginByMobile`, {mobile, checkCode,appId:'2'}, 'POST')
 // 获取用户信息(根据会话)
-export const reqUser = () => ajax('/api/user/banggo/getUserInfo',{},'POST')
+export const reqUser = () => ajax(`${BaseUrl}/api/user/banggo/getUserInfo`,{},'POST')
 
 
 export const testApi = () => ajax('/qianzui/proxy/factorybybrand',{brandid:15,state:'0x001C',typeid:0})

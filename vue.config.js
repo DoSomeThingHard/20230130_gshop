@@ -20,10 +20,10 @@ module.exports = {
                 target:'https://s.search.bilibili.com',
                 pathRewrite:{'^/myBlibli':''},
             },
-            '/api':{
-                // 我们使用这个当做测试服务器
-                target:'http://yfbgserver.fi.com'
-            }
+            // '/api':{
+            //     // 我们使用这个当做测试服务器
+            //     target:'http://yfbgserver.fi.com'
+            // }
         }
     }
 }
